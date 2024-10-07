@@ -36,7 +36,7 @@
                 }
             }
             // if you can't find the correct student return the first one
-            return (nullStudent());
+            return new NullStudent();
         }
 
 
@@ -45,12 +45,21 @@
         {
             return (myStudents[index]);
         }
-        private IStudentInterface nullStudent()
-        {
-            // create a null student
-            IStudentInterface nullStudent = new StudentModel(-1, "Null Student", -999);
-            return nullStudent;
-        }
+        //private IStudentInterface nullStudent()
+        //{
+        //    // create a null student
+        //    IStudentInterface nullStudent = new StudentModel(-1, "Null Student", -999);
+        //    return nullStudent;
+        //}
+
+        //private IStudentInterface nullStudent()
+        //{
+        //    // create a null student
+        //    NullStudent nullStudent = new NullStudent();
+        //    return nullStudent;
+        //}
+
+
 
         public void AddStudent(IStudentInterface newStudent)
         {
