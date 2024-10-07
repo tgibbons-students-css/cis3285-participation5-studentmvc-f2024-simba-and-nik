@@ -2,13 +2,15 @@
 {
     public class StudentRepository : IStudentCRUDInterface
     {
-        static List<StudentModel> myStudents = new List<StudentModel>();
+        static List<IStudentInterface> myStudents = new List<IStudentInterface>();
+
 
         public StudentRepository()
         {
             if (myStudents.Count == 0)
             {
                 // if list is empty, initialize it
+
                 myStudents.Add(new StudentModel(1001, "Tom", 16));
                 myStudents.Add(new StudentModel(1002, "Jen", 8));
                 myStudents.Add(new StudentModel(1003, "Sabah", 16));
@@ -16,17 +18,17 @@
 
         }
 
-        public List<StudentModel> getAllStudent()
+        public List<IStudentInterface> getAllStudent()
         {
             return myStudents;
         }
 
 
-        public StudentModel getStudentById(int id)
+        public IStudentInterface getStudentById(int id)
         {
             //Console.WriteLine("Getting student with id = " + id);
             //return myStudents.Find(s => s.Id == id);
-            foreach (StudentModel student in myStudents)
+            foreach (IStudentInterface student in myStudents)
             {
                 if (student.Id == id)
                 {
@@ -39,18 +41,18 @@
 
 
 
-        public StudentModel getOneStudent(int index)
+        public IStudentInterface getOneStudent(int index)
         {
             return (myStudents[index]);
         }
-        private StudentModel nullStudent()
+        private IStudentInterface nullStudent()
         {
             // create a null student
-            StudentModel nullStudent = new StudentModel(-1, "Null Student", -999);
+            IStudentInterface nullStudent = new StudentModel(-1, "Null Student", -999);
             return nullStudent;
         }
 
-        public void AddStudent(StudentModel newStudent)
+        public void AddStudent(IStudentInterface newStudent)
         {
             myStudents.Add(newStudent);
         }
@@ -63,7 +65,7 @@
             myStudents.RemoveAt(index);
         }
 
-        public void UpdateStudent(int studentId, StudentModel updatedStudent)
+        public void UpdateStudent(int studentId, IStudentInterface updatedStudent)
         {
             // search the list for the student that matches the student ID
             // DEBT --- Handle case when student id not found and index is -1
